@@ -63,7 +63,7 @@ public class NotesArrayAdapter extends ArrayAdapter<Notes> {
             Notes notes = arrNotes.get(position);
             Log.d("NotesArray Adapter", "load background..." + notes.getBackground());
             Log.d("NotesArray Adapter", "load alarm..." + notes.getAlarm());
-            Log.d("NotesArray Adapter", "load id..." + notes.getId());
+            Log.d("NotesArray Adapter", "load id..." + notes.getID());
             txtTitle.setText(notes.getTitle());
             txtContent.setText(notes.getContent());
             txtCreatedDate.setText(notes.getCreatedDate());

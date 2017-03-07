@@ -92,7 +92,7 @@ public class DabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
 
-        values.put(KEY_ID,note.getId());
+        values.put(KEY_ID,note.getID());
         values.put(KEY_TITLE, note.getTitle());
         values.put(KEY_CONTENT, note.getContent());
         values.put(KEY_CREATED_DATE, note.getCreatedDate());
@@ -114,7 +114,7 @@ public class DabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_NOTES, new String[]{KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_CREATED_DATE, KEY_ALARM, KEY_BACGROUND}, KEY_ID + "=?", new String[] { String.valueOf(Id) }, null, null, null, null);
         if (cursor.moveToFirst()) {
 
-            notes.setId(cursor.getInt(0));
+            notes.setID(cursor.getInt(0));
             notes.setTitle(cursor.getString(1));
             notes.setContent(cursor.getString(2));
             notes.setCreatedDate(cursor.getString(3));
@@ -122,7 +122,7 @@ public class DabaseHandler extends SQLiteOpenHelper {
             notes.setBackground(cursor.getString(5));
 
         }
-        Log.d("Get Note", ""+notes.getId());
+        Log.d("Get Note", ""+notes.getID());
 
         return notes;
     }
@@ -139,7 +139,7 @@ public class DabaseHandler extends SQLiteOpenHelper {
             Log.d("GetAll NOTE", "MoveToFirst");
             do {
                 Notes notes = new Notes();
-                notes.setId(cursor.getInt(0));
+                notes.setID(cursor.getInt(0));
                 notes.setTitle(cursor.getString(1));
                 notes.setContent(cursor.getString(2));
                 notes.setCreatedDate(cursor.getString(3));
@@ -167,7 +167,7 @@ public class DabaseHandler extends SQLiteOpenHelper {
             Log.d("GetAll NOTE", "MoveToFirst");
             do {
                 Notes notes = new Notes();
-                notes.setId(cursor.getInt(0));
+                notes.setID(cursor.getInt(0));
                 notes.setTitle(cursor.getString(1));
                 notes.setContent(cursor.getString(2));
                 notes.setCreatedDate(cursor.getString(3));
@@ -220,7 +220,7 @@ public class DabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_ALARM, notes.getAlarm());
         values.put(KEY_BACGROUND, notes.getBackground());
 
-        int i = db.update(TABLE_NOTES, values, KEY_ID + "=?", new String[]{String.valueOf(notes.getId())});
+        int i = db.update(TABLE_NOTES, values, KEY_ID + "=?", new String[]{String.valueOf(notes.getID())});
         db.close();
         Log.d("UPDATE NOTE", notes.toString());
         return i;

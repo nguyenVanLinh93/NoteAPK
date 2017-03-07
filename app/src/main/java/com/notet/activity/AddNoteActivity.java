@@ -16,7 +16,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,10 +46,13 @@ import com.note.databasehandler.DabaseHandler;
 import com.note.model.Images;
 import com.note.model.Notes;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class AddNoteActivity extends Activity {
@@ -56,6 +61,7 @@ public class AddNoteActivity extends Activity {
     public static final int REQUEST_CODE_ADD_NOTE = 111;
     public static final int RESULT_COLOR = 113;
     public static final int RESULT_PHOTO = 115;
+    public static final int REQUEST_TAKE_PHOTO = 1;
     //  mColor use to setbackground for this and Notes
     public static final int RESULT_COLOR_WHITE = 200;
     public static final int RESULT_COLOR_YELLOW = 201;
@@ -99,6 +105,7 @@ public class AddNoteActivity extends Activity {
     // string images
     protected ArrayList<Bitmap> mBitmapArrayList = new ArrayList<>();
     //protected String mString = "";
+    protected String mCurrentPhotoPath;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -408,7 +415,7 @@ public class AddNoteActivity extends Activity {
 
     public void insertNote(int id) {
         mNotes = new Notes();
-        mNotes.setId(id);
+        mNotes.setID(id);
         mNotes.setTitle(mTxtTitle.getText() + "");
         mNotes.setContent(mTxtContent.getText() + "");
         //mNotes.setContent(saveImages()); // demo save image
@@ -432,7 +439,7 @@ public class AddNoteActivity extends Activity {
         // set alarm for this item.
         if (!mStrAlarm.toString().equals(" ")) {
             Log.d("AddNoteActivity", "Add mNote mStrAlarm.." + mStrAlarm);
-            startAlert(notes.getId(), mStrAlarm);
+            startAlert(notes.getID(), mStrAlarm);
 
         }
     }
@@ -666,4 +673,46 @@ public class AddNoteActivity extends Activity {
         return MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
     }
     */
+    /**
+     *
+     *  SAVE IMAGES FUNCTION : in deploper.android.com
+     *
+     */
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+                Log.d("Error", "occurred while creating the File");
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.example.android.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
 }

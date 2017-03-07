@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Notes implements Serializable {
 
-    private int Id;
+    private int ID;
     private String Title;
     private String Content;
     private String CreatedDate;
@@ -17,7 +17,7 @@ public class Notes implements Serializable {
     // TODO private String images // String image : path+path+path+..... after crack = String.split -> array images[]
 
     public Notes(int id, String title, String content, String createdDate, String alarm, String background) {
-        Id = id;
+        ID = id;
         Title = title;
         Content = content;
         CreatedDate = createdDate;
@@ -27,12 +27,12 @@ public class Notes implements Serializable {
     public Notes() {
     }
 
-    public int getId() {
-        return Id;
+    public int getID() {
+        return ID;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setID(int id) {
+        ID = id;
     }
 
     public String getTitle() {

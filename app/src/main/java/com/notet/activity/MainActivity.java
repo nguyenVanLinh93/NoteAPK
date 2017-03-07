@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
                     // pust extra
                     Notes iNote = mNotesArrayList.get(position);
                     // get id mNote and put to edit mActivity
-                    it.putExtra("id", iNote.getId());
+                    it.putExtra("id", iNote.getID());
                     startActivity(it);
                     //Toast.makeText(getBaseContext(), "vi tri"+position, Toast.LENGTH_LONG).show();
                 }

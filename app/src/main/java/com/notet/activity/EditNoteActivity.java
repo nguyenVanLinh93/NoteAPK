@@ -131,7 +131,7 @@ public class EditNoteActivity extends AddNoteActivity {
         // set alarm for this item.
         if (!mStrAlarm.toString().equals(" ")) {
             Log.d("EditNoteActivity", "edit mNote mStrAlarm.." + mStrAlarm);
-            startAlert(notes.getId(), mStrAlarm);
+            startAlert(notes.getID(), mStrAlarm);
 
         }
     }
