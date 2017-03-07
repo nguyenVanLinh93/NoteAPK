@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/.android/build-cache/1bf96a825a66d88b9472376ce1002275dd95a8cb/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e3234cd25e23069abd48ecd2117bc0e8011bf45a">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d79adfafb51d68a88347ba20a39b82129ca2247f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/.android/build-cache/3c03a3fca3c4f564d2ce9b49264f1a8ef4ccd608/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8f26bd881a54d671c52d8f8f3f394edbfde6eca8/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/libs/universal-image-loader-1.9.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e025bc5b84968e7d6ac765e660a70b3e5a87432">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.2_07333613e93177baed9f64ec9430f4c123b9d700.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d7de3cd51271285b12a3c5a754d186d1650faa4c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/libs/universal-image-loader-1.9.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e025bc5b84968e7d6ac765e660a70b3e5a87432">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/2/universal-image-loader-1.9.2_07333613e93177baed9f64ec9430f4c123b9d700/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.8.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c61641e333fa88da21758bab8cc28ee16604b05f">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-common-9.8.0_a68b9d100606f4d4c05ec8c42f2650f8993e7dcb.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f354e1061f80a2f939af7c13491caf5d49da3640">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d6caea811174a27e13efed12acb3cc05d16c8f2c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/.android/build-cache/1e12e0282792524a3b68d55e5ff1247cf30a8125/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_90594d9e2a8a8190250eb94e105ada53b8db99e0/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0_116ff1686732f1bf4af35fb93f5a17ab75140a9d.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/.android/build-cache/334d5f0d55c8c44134d41d73694b4b51a85e807e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c61641e333fa88da21758bab8cc28ee16604b05f">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e9fe40c358c672872f666c3b93977ebcd80cc5cb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/.android/build-cache/e91c561d8a7f2cfc294188345751143557db3255/output/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_f0161dc60f71f5678503af7c5d1671f4700bc5de/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/.android/build-cache/e91c561d8a7f2cfc294188345751143557db3255/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4dc73c2bd46be9fc91c820201e81efc82cdec684/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.8.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9f6d236bac26d02b410e4ee186ba517ace5ee661">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-9.8.0_926697589849d4e22eb8a905a4cde030a68d4c21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.0.0_36deab80f059fb6f44e493de6ac8e6dbbfa84c15.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0_b23235c43a4ca937d5f59195bf4f13ee68adf631/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0_b23235c43a4ca937d5f59195bf4f13ee68adf631.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.8.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf2e1838e4428616c1aa26edf43de72b5b99bf84">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-9.8.0_c60f0655f4cd008ed5f49937d2b52f0be168bfe2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/nguyenlinh/.android/build-cache/80bf7bc7e9b864f25767a71fbec28d81527daf78/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_624b8bf29cf21aa4d122200cf6fb62690bd8ac15/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/9.8.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e3234cd25e23069abd48ecd2117bc0e8011bf45a">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appindexing-9.8.0_d62af20a63076d513396725f8c22d6e6bca9502c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.8.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7e92aadd0697922316d1395c1887a23aebec640a">
+        <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-9.8.0_d6ebadb8ba5894386dcb7ab94962b88b1800a9d9.jar" />
+    </item>
+
+</items>

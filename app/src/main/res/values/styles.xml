@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="AppTheme.Holo.Light.Spinner.DropDown" parent="android:Widget.Holo.Light.Spinner"/>
+
+    <style name="AppTheme.AppBarOverlay" />
+
+    <style name="AppTheme.PopupOverlay" />
+
+    <style name="MyBorderlessButton" >
+    </style>
+
+    <style name="MyBorderlessButtonStyle" >
+    </style>
+
+    <style name="My_Dialog_Theme" parent="android:Theme.Holo.Light" />
+</resources>

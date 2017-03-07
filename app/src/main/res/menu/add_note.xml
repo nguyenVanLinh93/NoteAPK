@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.notet.activity.AddNoteActivity" >
+    
+    <item android:id="@+id/action_insertphoto"
+        android:title="@string/action_insertphoto"
+        android:icon="@drawable/ic_action_picture2"
+        android:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_setbackground"
+          android:title="@string/action_setbackground"
+          android:icon="@drawable/ic_action_view_as_grid"
+          android:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_savenote"
+          android:title="@string/action_savenote"
+          android:icon="@drawable/ic_action_accept"
+          android:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_edit_note"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.notet.activity.EditNoteActivity">
+
+    <GridView
+        android:id="@+id/grid_image_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="3"/>
+    <TextView
+        android:id="@+id/txtCreatedDateEdit"
+        android:layout_marginStart="200dp"
+        android:text="10/10/2014 09:10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:hint="Title"
+        android:id="@+id/txtAddTitleedit">
+
+        <requestFocus/>
+    </EditText>
+
+    <EditText
+        android:textSize="16dp"
+        android:hint="Note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAddContentEdit"/>
+
+    <LinearLayout
+        android:id="@+id/ll2ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_action_alarms2"/>
+
+        <TextView
+            android:id="@+id/txtAlarmEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25sp"
+            android:text="Alarm"/>
+
+        <LinearLayout
+            android:id="@+id/llAlarmEd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Spinner
+                android:id="@+id/spDateed"
+                android:layout_width="110dp"
+                android:layout_height="40dp"></Spinner>
+
+            <Spinner
+                android:id="@+id/spTimeEd"
+                android:layout_width="100dp"
+
+                android:layout_height="40dp"></Spinner>
+
+            <ImageView
+                android:id="@+id/btnCancelEd"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_action_cancel"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <ImageButton
+            android:id="@+id/img_btn_previous"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_previous_item"/>
+
+        <ImageButton
+            android:id="@+id/img_btn_share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_share"/>
+
+        <ImageButton
+            android:id="@+id/img_btn_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="deleteNote"
+            android:src="@drawable/ic_action_discard"/>
+
+        <ImageButton
+            android:id="@+id/img_btn_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_action_next_item"/>
+    </LinearLayout>
+</LinearLayout>

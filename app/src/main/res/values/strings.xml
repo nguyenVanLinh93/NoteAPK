@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Note</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_choose_color">ChooseColor</string>
+    <string name="title_activity_add_note">Note</string>
+    <string name="title_activity_insert_photo">InsertPhoto</string>
+    <string name="action_insertphoto">Insert Photo</string>
+    <string name="action_setbackground">Set Background</string>
+    <string name="action_savenote">Save</string>
+    <string name="acion_deletenote">Delete</string>
+    <string name="noNotes">No Notes</string>
+
+    <string-array name="arrdate">
+        <item>Today</item>
+        <item>Tomorrow</item>
+        <item>Next</item>
+        <item>Other...</item>
+    </string-array>
+    <string-array name="arrtime">
+        <item>9:00</item>
+        <item>13:00</item>
+        <item>20:00</item>
+        <item>Other...</item>
+    </string-array>
+
+    <string name="title_activity_edit_notet_acitivty">Edit Note</string>
+
+</resources>
