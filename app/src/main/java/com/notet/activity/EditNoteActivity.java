@@ -3,7 +3,9 @@ package com.notet.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 
 import com.note.databasehandler.DabaseHandler;
 import com.note.model.Notes;
+
+import java.io.IOException;
 
 public class EditNoteActivity extends AddNoteActivity {
     @Override
@@ -75,10 +79,14 @@ public class EditNoteActivity extends AddNoteActivity {
         }
 
         // load images
-        //loadImages(); // TODO this
+        try {
+            loadImages(); // TODO this
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void loadImages() {
+    private void loadImages() throws IOException {
         Bundle bd = getIntent().getExtras();
         if (bd != null) {
             int id = bd.getInt("id");
@@ -86,10 +94,14 @@ public class EditNoteActivity extends AddNoteActivity {
             // get string bitmap
             // demo
             String s = iNote.getContent();
-            Bitmap bmp = readBitmapFile(s);
-            Log.d("insert photo","source "+bmp.toString());
+            //String s = "/storage/emulated/0/Android/data/com.notet.activity/files/Pictures/JPEG_20170308_201643_160484423.jpg";
+            //Bitmap bmp = readBitmapFile(s);
+            Bitmap bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(s));
+            mTxtContent.setText(s+bmp.toString()); // demo
+            //Log.d("insert photo","source "+bmp.toString());
             mGridImagesAdapter.addItem(bmp);
             mGridImagesAdapter.notifyDataSetChanged();
+            mGridView.setAdapter(mGridImagesAdapter);
         }
     }
 

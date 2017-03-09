@@ -61,7 +61,7 @@ public class AddNoteActivity extends Activity {
     public static final int REQUEST_CODE_ADD_NOTE = 111;
     public static final int RESULT_COLOR = 113;
     public static final int RESULT_PHOTO = 115;
-    public static final int REQUEST_TAKE_PHOTO = 1;
+    public static final int REQUEST_TAKE_PHOTO = 0;
     //  mColor use to setbackground for this and Notes
     public static final int RESULT_COLOR_WHITE = 200;
     public static final int RESULT_COLOR_YELLOW = 201;
@@ -104,8 +104,8 @@ public class AddNoteActivity extends Activity {
     protected ArrayList<Images> dataImage = new ArrayList<>();
     // string images
     protected ArrayList<Bitmap> mBitmapArrayList = new ArrayList<>();
-    //protected String mString = "";
-    protected String mCurrentPhotoPath;
+    protected String mString = "";
+    protected String mCurrentPhotoPath="";
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -345,6 +345,7 @@ public class AddNoteActivity extends Activity {
                 switch (i) {
                     case 0:
                         cameraIntent();
+                        //dispatchTakePictureIntent(); // demo save file
                         break;
                     case 1:
                         galleryIntent();
@@ -417,14 +418,16 @@ public class AddNoteActivity extends Activity {
         mNotes = new Notes();
         mNotes.setID(id);
         mNotes.setTitle(mTxtTitle.getText() + "");
-        mNotes.setContent(mTxtContent.getText() + "");
-        //mNotes.setContent(saveImages()); // demo save image
+        //mNotes.setContent(mTxtContent.getText() + "");
+        mNotes.setContent(mString); // demo save image
         Log.d("AddNote Created date", mTxtCurrentDate.getText() + "");
         mNotes.setCreatedDate(mTxtCurrentDate.getText() + "");
         mNotes.setBackground(mColor + "");
         mNotes.setAlarm(mStrAlarm);
 
         insert(mNotes);
+        // dem0
+        galleryAddPic();
     }
 
     public void insert(Notes notes) {
@@ -503,6 +506,19 @@ public class AddNoteActivity extends Activity {
                 Log.d("insert photo","source "+bitmap.toString());
                 mGridImagesAdapter.addItem(resize);
                 mGridImagesAdapter.notifyDataSetChanged();
+
+                // demo save images
+                try {
+                    createImageFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                galleryAddPic();
+                /*try {
+                    insertImage();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }*/
 
             } else if (requestCode == 1) {
                 Bitmap bitmap = null;
@@ -691,6 +707,7 @@ public class AddNoteActivity extends Activity {
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
+        mString = image.getPath();
         return image;
     }
     private void dispatchTakePictureIntent() {
@@ -708,11 +725,22 @@ public class AddNoteActivity extends Activity {
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.android.fileprovider",
+                        "com.notet.activity.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
         }
     }
+    private void galleryAddPic() {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(mCurrentPhotoPath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
+    }
+    public void insertImage() throws FileNotFoundException {
+        MediaStore.Images.Media.insertImage(getContentResolver(),mCurrentPhotoPath,"a1","kaka");
+    }
+
 }
