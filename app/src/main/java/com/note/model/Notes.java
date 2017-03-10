@@ -14,7 +14,7 @@ public class Notes implements Serializable {
     private String Alarm;
     private String Background;
     // TODO create varilable phoito bitmap
-    // TODO private String images // String image : path+path+path+..... after crack = String.split -> array images[]
+    private String images; // String image : path+path+path+..... after crack = String.split -> array images[]
 
     public Notes(int id, String title, String content, String createdDate, String alarm, String background) {
         ID = id;
@@ -78,5 +78,13 @@ public class Notes implements Serializable {
     @Override
     public String toString() {
         return this.Title;
+    }
+
+    public String getImages() {
+        return images;
+    }
+
+    public void setImages(String images) {
+        this.images = images;
     }
 }

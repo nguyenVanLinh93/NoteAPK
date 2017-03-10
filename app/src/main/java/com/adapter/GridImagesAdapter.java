@@ -51,12 +51,20 @@ public class GridImagesAdapter extends ArrayAdapter<Images> {
         return row;
     }
 
-    public void addItem(Bitmap image) {
-        data.add(new Images(image));
+    public void addItem(Bitmap image, String path) {
+        data.add(new Images(image,path));
     }
 
     public void removeItem(int position){
         data.remove(position);
+    }
+
+    public String getPathItem(int position){
+        return data.get(position).getPath();
+    }
+
+    public int sizeAdapter(){
+        return data.size();
     }
 
     static class ViewHolder {

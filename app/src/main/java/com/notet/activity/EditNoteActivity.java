@@ -3,9 +3,7 @@ package com.notet.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,10 +24,14 @@ public class EditNoteActivity extends AddNoteActivity {
     @Override
     public void getControls() {
         super.getControls();
-        loadData();
+        try {
+            loadData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void loadData() {
+    private void loadData() throws IOException {
         // load Titie and content and image  Node edit
         mDabaseHandler = new DabaseHandler(this);
         Bundle bd = getIntent().getExtras();
@@ -76,13 +78,11 @@ public class EditNoteActivity extends AddNoteActivity {
                 //mSpDate.setSelection(0);
                 //mSpTime.setSelection(0);
             }
-        }
 
-        // load images
-        try {
-            loadImages(); // TODO this
-        } catch (IOException e) {
-            e.printStackTrace();
+            // Load Images
+            if(!iNote.getImages().equals("")){
+                loadImages();
+            }
         }
     }
 
@@ -93,15 +93,22 @@ public class EditNoteActivity extends AddNoteActivity {
             Notes iNote = (Notes) mDabaseHandler.getNote(id);
             // get string bitmap
             // demo
-            String s = iNote.getContent();
+            String path = iNote.getImages();
             //String s = "/storage/emulated/0/Android/data/com.notet.activity/files/Pictures/JPEG_20170308_201643_160484423.jpg";
             //Bitmap bmp = readBitmapFile(s);
-            Bitmap bmp = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(s));
-            mTxtContent.setText(s+bmp.toString()); // demo
-            //Log.d("insert photo","source "+bmp.toString());
-            mGridImagesAdapter.addItem(bmp);
-            mGridImagesAdapter.notifyDataSetChanged();
-            mGridView.setAdapter(mGridImagesAdapter);
+            String[] tokenPath = path.split("tachchuoi");
+            for(String token: tokenPath){
+                if(token.length()!=0){
+                    Bitmap bitmap = BitmapFactory.decodeFile(token);
+                    Bitmap resize = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+                    Log.d("insert photo","source "+bitmap.toString());
+                    mBitmapArrayList.add(bitmap);
+                    mGridImagesAdapter.addItem(resize,token);
+                    //mGridImagesAdapter.addItem(bitmap);
+                    mGridImagesAdapter.notifyDataSetChanged();
+                    mGridView.setAdapter(mGridImagesAdapter);
+                }
+            }
         }
     }
 

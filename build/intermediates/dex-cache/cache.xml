@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="5abcfe1cf37b032544a08e3dfb1be375c936a8ef">
+        sha1="aea3635beb9f64a8e23845efa8b5f26d95361833">
         <dex dex="/Users/nguyenlinh/AndroidStudioProjects/NoteAPK/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d6caea811174a27e13efed12acb3cc05d16c8f2c/classes.dex" />
     </item>
     <item

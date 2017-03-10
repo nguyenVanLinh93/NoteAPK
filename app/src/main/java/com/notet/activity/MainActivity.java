@@ -50,9 +50,9 @@ public class MainActivity extends Activity {
     public void loadMain() {
 
        myDabaseHandler = new DabaseHandler(this);
-//        myDabaseHandler.deleteNotes();
-//        myDabaseHandler.dropTable();
-//        myDabaseHandler.CreateTable();
+        //myDabaseHandler.deleteNotes();
+        //myDabaseHandler.dropTable();
+        //myDabaseHandler.CreateTable();
         //myDabaseHandler.deleteAllNotes();
 
         mNotesArrayList = myDabaseHandler.getAllNotesDESC();

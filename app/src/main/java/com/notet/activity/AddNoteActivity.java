@@ -9,8 +9,10 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -47,7 +49,6 @@ import com.note.model.Images;
 import com.note.model.Notes;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -344,8 +345,9 @@ public class AddNoteActivity extends Activity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 switch (i) {
                     case 0:
-                        cameraIntent();
-                        //dispatchTakePictureIntent(); // demo save file
+                        //cameraIntent();
+                        dispatchTakePictureIntent(); // demo save file
+                        //insertImage();
                         break;
                     case 1:
                         galleryIntent();
@@ -360,7 +362,7 @@ public class AddNoteActivity extends Activity {
     private void galleryIntent() {
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setAction(Intent.ACTION_PICK); // new
         startActivityForResult(Intent.createChooser(intent, "Select File"), 1);
     }
 
@@ -418,8 +420,8 @@ public class AddNoteActivity extends Activity {
         mNotes = new Notes();
         mNotes.setID(id);
         mNotes.setTitle(mTxtTitle.getText() + "");
-        //mNotes.setContent(mTxtContent.getText() + "");
-        mNotes.setContent(mString); // demo save image
+        mNotes.setContent(mTxtContent.getText() + "");
+        mNotes.setImages(saveImages()); // demo save image
         Log.d("AddNote Created date", mTxtCurrentDate.getText() + "");
         mNotes.setCreatedDate(mTxtCurrentDate.getText() + "");
         mNotes.setBackground(mColor + "");
@@ -499,21 +501,40 @@ public class AddNoteActivity extends Activity {
 
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == 0) {
-                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                // demo
+                // demo new version
+                galleryAddPic();
+                Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath);
+                Bitmap resize = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+                Log.d("insert photo","source "+bitmap.toString());
                 mBitmapArrayList.add(bitmap);
+                mGridImagesAdapter.addItem(resize,mCurrentPhotoPath);
+                //mGridImagesAdapter.addItem(bitmap);
+                mGridImagesAdapter.notifyDataSetChanged();
+                mCurrentPhotoPath = "";
+                //Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                //try new bitmap
+                /*Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.parse(mCurrentPhotoPath));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+                // demo
+                /*mBitmapArrayList.add(bitmap);
                 Bitmap resize = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
                 Log.d("insert photo","source "+bitmap.toString());
                 mGridImagesAdapter.addItem(resize);
-                mGridImagesAdapter.notifyDataSetChanged();
+                mGridImagesAdapter.addItem(bitmap);
+                mGridImagesAdapter.notifyDataSetChanged();*/
+                // demo get path
+                //mString = getPathFromData(data);
 
                 // demo save images
-                try {
+                /*try {
                     createImageFile();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-                galleryAddPic();
+                }*/
                 /*try {
                     insertImage();
                 } catch (FileNotFoundException e) {
@@ -521,23 +542,34 @@ public class AddNoteActivity extends Activity {
                 }*/
 
             } else if (requestCode == 1) {
-                Bitmap bitmap = null;
-                if (data != null) {
+                //Bitmap bitmap = null;
+                /*if (data != null) {
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(
                                 getApplicationContext().getContentResolver(), data.getData()
                         );
+                        // new version
+                        Uri imgUri = data.getData();
+                        mString = getPath(imgUri);
+                        //mString = RealPathUtil.getRealPathFromUri(this, imgUri);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
+                }*/
 
+                if (data != null){
+                    Uri imgUri = data.getData();
+                    mString = getPath(imgUri);
+                }
+                Bitmap bitmap = BitmapFactory.decodeFile(mString);
                 mBitmapArrayList.add(bitmap);
                 Bitmap resize = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
-                mGridImagesAdapter.addItem(resize);
+                mGridImagesAdapter.addItem(resize,mString);
                 mGridImagesAdapter.notifyDataSetChanged();
+                mString = "";
+                //mString = getPathFromData(data);
             }
 
         }
@@ -545,6 +577,14 @@ public class AddNoteActivity extends Activity {
         //mString = getPathFromData(data);
 
 
+    }
+
+    private String getPath(Uri imgUri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(imgUri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 
     // datepicker and timepiker dialog
@@ -624,20 +664,9 @@ public class AddNoteActivity extends Activity {
      */
     public String saveImages(){
         String s="";
-        for (int i = 0; i< mBitmapArrayList.size(); i++){
-            Bitmap photo = mBitmapArrayList.get(i);
-            // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
-            //Uri tempUri = getImageUri(getApplicationContext(), photo);
-
-            // CALL THIS METHOD TO GET THE ACTUAL PATH
-            //File finalFile = new File(getRealPathFromURI(tempUri));
-
-            //s += finalFile.getPath();
-            //s += myPath(getApplicationContext(),photo);
+        for(int i = 0;i<mGridImagesAdapter.sizeAdapter();i++){
+            s += mGridImagesAdapter.getPathItem(i) + "tachchuoi";
         }
-        /*Bitmap photo = mBitmapArrayList.get(0);
-        Uri tempUri = getImageUri(getBaseContext(), photo);
-        s = getImgPath(tempUri);*/
         return s;//demo
     }
 
@@ -673,16 +702,7 @@ public class AddNoteActivity extends Activity {
         }
         return largeImagePath;
     }
-    public String getPathFromData(Intent data){
-        Uri selectedImage = data.getData();
-        String[] filePathColumn = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
-        cursor.moveToFirst();
-        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-        String picturePath = cursor.getString(columnIndex);
-        cursor.close();
-        return picturePath;
-    }
+
     public String myPath(Context inContext, Bitmap inImage){
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes);
@@ -699,15 +719,16 @@ public class AddNoteActivity extends Activity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        //File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
+        //File image = File.createTempFile(imageFileName,".jpg");
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
-        mString = image.getPath();
         return image;
     }
     private void dispatchTakePictureIntent() {
@@ -728,6 +749,7 @@ public class AddNoteActivity extends Activity {
                         "com.notet.activity.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                //takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
         }
@@ -739,8 +761,54 @@ public class AddNoteActivity extends Activity {
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
     }
-    public void insertImage() throws FileNotFoundException {
-        MediaStore.Images.Media.insertImage(getContentResolver(),mCurrentPhotoPath,"a1","kaka");
+    public void insertImage() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+//            fileTemp = ImageUtils.getOutputMediaFile();
+            ContentValues values = new ContentValues(1);
+            values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
+            Uri fileUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+//            if (fileTemp != null) {
+//            fileUri = Uri.fromFile(fileTemp);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            startActivityForResult(intent, 0);
+//            } else {
+//                Toast.makeText(this, getString(R.string.error_create_image_file), Toast.LENGTH_LONG).show();
+//            }
+        } else {
+            Toast.makeText(this, "erro", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public String getPathFromData(Intent data){
+        Uri selectedImage = data.getData();
+        String[] filePathColumn = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        String picturePath = cursor.getString(columnIndex);
+        cursor.close();
+        return picturePath;
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        /*Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);*/
+        // new version
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+        String yourRealPath="";
+        Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
+        if(cursor.moveToFirst()){
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            yourRealPath = cursor.getString(columnIndex);
+        } else {
+            //boooo, cursor doesn't have rows ...
+        }
+        //cursor.close();
+        return yourRealPath;
     }
 
 }

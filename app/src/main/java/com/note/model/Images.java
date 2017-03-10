@@ -8,12 +8,22 @@ import android.graphics.Bitmap;
 
 public class Images {
     private Bitmap image;
+    private String path;
 
-    public Images(Bitmap image) {
+    public Images(Bitmap image, String path) {
         this.image = image;
+        this.path = path;
     }
 
     public Bitmap getImage() {
         return image;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
