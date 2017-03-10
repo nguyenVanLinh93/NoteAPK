@@ -16,6 +16,7 @@ import android.widget.GridView;
 import com.adapter.NotesArrayAdapter;
 import com.note.databasehandler.DabaseHandler;
 import com.note.model.Notes;
+import com.permissions.Permissions;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,9 @@ public class MainActivity extends Activity {
         loadMain();
 
         // set on item click listener of gridview
+
+        // setting permission
+        Permissions.requestRWPermission(this);
 
     }
     // laoding data (use when call onCreate and onResume)
