@@ -504,7 +504,7 @@ public class AddNoteActivity extends Activity {
                 // demo new version
                 galleryAddPic();
                 Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath);
-                Bitmap resize = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+                Bitmap resize = Bitmap.createScaledBitmap(bitmap, 300, 250, true);
                 Log.d("insert photo","source "+bitmap.toString());
                 mBitmapArrayList.add(bitmap);
                 mGridImagesAdapter.addItem(resize,mCurrentPhotoPath);
@@ -565,7 +565,8 @@ public class AddNoteActivity extends Activity {
                 }
                 Bitmap bitmap = BitmapFactory.decodeFile(mString);
                 mBitmapArrayList.add(bitmap);
-                Bitmap resize = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+                Bitmap resize = Bitmap.createScaledBitmap(bitmap, 300, 250, true);
+                Log.d("insert photo","source "+bitmap.toString());
                 mGridImagesAdapter.addItem(resize,mString);
                 mGridImagesAdapter.notifyDataSetChanged();
                 mString = "";

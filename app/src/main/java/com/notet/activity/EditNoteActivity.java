@@ -100,7 +100,7 @@ public class EditNoteActivity extends AddNoteActivity {
             for(String token: tokenPath){
                 if(token.length()!=0){
                     Bitmap bitmap = BitmapFactory.decodeFile(token);
-                    Bitmap resize = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+                    Bitmap resize = Bitmap.createScaledBitmap(bitmap, 300, 250, true);
                     Log.d("insert photo","source "+bitmap.toString());
                     mBitmapArrayList.add(bitmap);
                     mGridImagesAdapter.addItem(resize,token);
