@@ -2,6 +2,8 @@ package com.notet.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -82,13 +84,34 @@ public class MainActivity extends Activity {
                 }
             });
             // set on item clong click listener TODO THIS : handler long clck listener
-            /*mGvNotes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            mGvNotes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    mGvNotes.setOnContextClickListener(this);
-                    return false;
+                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Confirm Delete");
+                    builder.setMessage("Are you sure want to delete this ?");
+                    builder.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
+
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Notes iNote = mNotesArrayList.get(position);
+                            myDabaseHandler.deleteNotes(iNote.getID());
+                            onResume();
+                        }
+                    });
+
+                    builder.setNegativeButton("No",new DialogInterface.OnClickListener(){
+
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.cancel();
+                        }
+                    });
+                    Log.d("delete photo", "ok");
+                    builder.create().show();
+                    return true;
                 }
-            });*/
+            });
         } else {
             setContentView(R.layout.activity_main_no_notes);
         }
